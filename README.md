@@ -50,3 +50,6 @@
 * LINE Messaging API
 * LINE Login
 * (ActionCable)
+
+
+https://www.figma.com/file/yVfF1iHM9K4Tgx2FqyFMHY/%E7%84%A1%E9%A1%8C?type=design&node-id=16%3A527&mode=design&t=oAxJhNfOvuf69VXU-1
