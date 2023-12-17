@@ -53,3 +53,7 @@
 
 
 https://www.figma.com/file/yVfF1iHM9K4Tgx2FqyFMHY/%E7%84%A1%E9%A1%8C?type=design&node-id=16%3A527&mode=design&t=oAxJhNfOvuf69VXU-1
+
+
+ER図
+https://app.diagrams.net/#G1zD9WPAHMb6zx9o8fxqa-wUjiK6Ivf8VV
