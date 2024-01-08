@@ -1,4 +1,3 @@
 class ApplicationController < ActionController::Base
-  helper_method :logged_in?
-  include Rails.application.routes.url_helpers
+  add_flash_types :success, :info, :warning, :danger
 end
