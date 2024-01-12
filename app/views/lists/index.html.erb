@@ -1,0 +1,7 @@
+<div class="grid grid-cols-5 gap-5">
+  <% if @cards.present? %>
+    <%= render @cards %>
+  <% else %>
+    <p><%= t('.no_result') %></p>
+  <% end %>
+</div>

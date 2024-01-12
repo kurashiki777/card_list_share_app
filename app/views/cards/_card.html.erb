@@ -1,0 +1,11 @@
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div id="card-id-<%= card.id %>" class="bg-white p-4 rounded-lg shadow-md">
+    <div class="card">
+      <%= image_tag 'board_placeholder.png', class: 'card-img-top', size: '20x30' %>
+      <div class="card-body">
+        <p class="card-text mb-2">Stock Quantity: <%= card.stock_quantity %></p>
+        <p class="card-text mb-2">Target Quantity: <%= card.target_quantity %></p>
+      </div>
+    </div>
+  </div>
+</div>
