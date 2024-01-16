@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :lists, only: %i[index edit update show destroy]
-  resources :cards, only: %i[index]
+  resources :cards, only: [:index, :new, :create]
 end
