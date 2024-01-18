@@ -1,6 +1,8 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!
+  
     def index
-      @cards = Card.all.includes(:user).order(created_at: :desc)
+      @cards = current_user.cards.includes(:user).order(created_at: :desc)
     end
 
     def new
@@ -23,7 +25,7 @@ class CardsController < ApplicationController
 
     private
 
-    def board_params
+    def card_params
     params.require(:card).permit(:name, :remarks, :target_quantity)
     end
 end
