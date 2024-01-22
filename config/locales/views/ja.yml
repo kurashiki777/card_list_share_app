@@ -24,11 +24,12 @@ ja:
       fail: 'ログインに失敗しました'
     destroy:
       success: 'ログアウトしました'
-  boards:
+  cards:
     index:
-      title: '掲示板一覧'
+      title: 'カード一覧'
+      no_result: 'カードがありません。'
     new:
-      title: '掲示板作成'
+      title: 'カード作成'
     bookmarks:
       title: 'ブックマーク一覧'
   profiles:

@@ -1,5 +1,4 @@
 class CardsController < ApplicationController
-  before_action :authenticate_user!
   
     def index
       @cards = current_user.cards.includes(:user).order(created_at: :desc)
