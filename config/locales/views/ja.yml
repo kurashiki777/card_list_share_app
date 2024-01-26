@@ -3,6 +3,7 @@ ja:
     login: 'ログイン'
     register: '登録'
     logout: 'ログアウト'
+    post: '投稿'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
@@ -30,6 +31,8 @@ ja:
       no_result: 'カードがありません。'
     new:
       title: 'カード作成'
+    show:
+      title: 'カード詳細'
     bookmarks:
       title: 'ブックマーク一覧'
   profiles:

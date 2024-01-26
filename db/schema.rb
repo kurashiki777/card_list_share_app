@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_23_055841) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_24_145933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_23_055841) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "user_id"
+    t.bigint "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_comments_on_card_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string "name", null: false
     t.integer "user_id", null: false
@@ -57,4 +67,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_23_055841) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "comments", "cards"
+  add_foreign_key "comments", "users"
 end

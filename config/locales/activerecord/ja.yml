@@ -2,7 +2,8 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
-      board: '掲示板'
+      card: 'カードリスト'
+      comment: 'コメント'
     attributes:
       user:
         email: 'メールアドレス'
@@ -10,3 +11,5 @@ ja:
         password_confirmation: 'パスワード確認'
         last_name: '姓'
         first_name: '名'
+      comment:
+        body: 'コメント'

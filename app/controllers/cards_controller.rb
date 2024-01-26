@@ -20,6 +20,8 @@ class CardsController < ApplicationController
 
     def show
     @card = Card.find(params[:id])
+    @comment = Comment.new
+    @comments = @card.comments.includes(:user).order(created_at: :desc)
     end
 
     private
