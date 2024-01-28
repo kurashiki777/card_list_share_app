@@ -1,3 +1,4 @@
+<% content_for(:title, t('.title')) %>
 <div class="grid grid-cols-5 gap-5">
   <% if @cards.present? %>
     <%= render partial: 'card', collection: @cards %>

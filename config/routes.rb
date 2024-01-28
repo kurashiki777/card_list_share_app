@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :lists, only: %i[index edit update show destroy]
-  resources :cards, only: %i[index new create show] do
+  resources :cards do
     resources :comments, only: %i[create], shallow: true
   end
 end
