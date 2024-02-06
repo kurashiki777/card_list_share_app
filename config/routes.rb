@@ -15,4 +15,9 @@ Rails.application.routes.draw do
   resources :cards do
     resources :comments, only: %i[create], shallow: true
   end
+  resources :groups do
+    get "join" => "groups#join"
+    delete 'delete_group'
+    get 'invitation', to: 'groups#show_by_invitation', as: :group_by_invitation
+  end
 end

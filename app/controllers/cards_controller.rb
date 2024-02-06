@@ -46,7 +46,7 @@ class CardsController < ApplicationController
 
     private
 
-    def card_params
+  def card_params
     params.require(:card).permit(:name, :remarks, :target_quantity, :stock_quantity, :card_image, :card_image_cache)
-    end
+  end
 end

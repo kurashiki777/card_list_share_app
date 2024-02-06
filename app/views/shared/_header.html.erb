@@ -6,9 +6,9 @@
       </div>
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <%= link_to t('cards.new.title'), new_card_path, class: "btn" %>
-        <li><a>ユーザー</a></li>
-        <li><a>グループ作成</a></li>
-        <li><a onclick="showGroupDropdown()">グループ</a></li>
+        <li><%= link_to t('activerecord.models.user'), groups_path, class: "btn" %></li>
+        <li><%= link_to t('group.new.title'), new_group_path, class: "btn" %></li>
+        <li><%= link_to t('group.index.title'), groups_path, class: "btn" %></li>
       </ul>
     </div>
   </div>

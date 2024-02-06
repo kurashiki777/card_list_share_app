@@ -1,5 +1,5 @@
 <% content_for(:title, t('.title')) %>
-<div class="grid grid-cols-5 gap-5">
+<div class="grid grid-cols-10 gap-5 mx-auto">
   <% if @cards.present? %>
     <%= render partial: 'card', collection: @cards %>
   <% else %>

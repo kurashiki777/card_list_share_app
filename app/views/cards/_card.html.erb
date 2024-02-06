@@ -1,13 +1,12 @@
-<div class="col-span-12 lg:col-span-2 mb-3">
-  <div id="card-id-<%= card.id %>" class="bg-white p-4 rounded-lg shadow-md">
+<div class="col-span-10 lg:col-span-1 mb-4">
+  <div id="card-id-<%= card.id %>" class="bg-white p-2 rounded-lg shadow-md">
     <div class="card">
       <%= link_to card_path(card) do %>
-        <%= image_tag card.card_image_url, class: 'card-img-top', width: '20', height: '30' %>
+        <%= image_tag card.card_image_url, class: 'card-img-top', width: '200', height: '300' %>
       <% end %>
       <div class="card-body">
-        <p class="card-text mb-2"><%= card.target_quantity %>:<%= card.stock_quantity %></p>
+        <p class="card-text mb-1"><%= card.target_quantity %>:<%= card.stock_quantity %></p>
       </div>
-      
     </div>
   </div>
 </div>

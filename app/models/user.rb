@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :cards, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :group_users
+  has_many :groups, through: :group_users
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

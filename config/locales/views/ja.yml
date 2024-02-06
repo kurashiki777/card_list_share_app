@@ -44,3 +44,8 @@ ja:
   profiles:
     show:
       title: 'プロフィール'
+  group:
+    new:
+      title: 'グループ作成'
+    index:
+      title: 'グループ'
