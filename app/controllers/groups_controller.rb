@@ -1,13 +1,15 @@
 class GroupsController < ApplicationController
   before_action :require_login
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :delete_group]
   helper ActionView::Helpers::AssetTagHelper
+
   def index
-    @q = Group.ransack(params[:q])
+    @q = current_user.groups.ransack(params[:q])
     @groups = @q.result(distinct: true).includes(group_users: :user).order(created_at: :desc).page(params[:page])
   end
 
   def show
+    # binding.pry
     #@book = Book.new
     @group = Group.find(params[:id])
   end
@@ -51,9 +53,12 @@ class GroupsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:id])
-   #current_userは、@group.usersから消されるという記述。
-    @group.users.delete(current_user)
-    redirect_to groups_path
+    if @group.users.include?(current_user)
+      @group.users.delete(current_user)
+      redirect_to groups_path, notice: 'グループから抜けました。'
+    else
+      redirect_to groups_path, alert: 'グループから抜けることができませんでした。'
+    end
   end
 
   def delete_group
@@ -68,12 +73,25 @@ class GroupsController < ApplicationController
     end
   end
 
-  def show_by_invitation
-    @group = Group.find_by(invitation_code: params[:invitation_code])
+  
+
+  def join_or_show_by_invitation
+    invitation_code = params[:invitation_code]
+    @group = Group.find_by_invitation_code(invitation_code)
+  
     if @group
-      redirect_to group_path(@group)
+      if @group.users.include?(current_user)
+        redirect_to groups_path, notice: 'すでにグループに参加しています。'
+      else
+        @group.users << current_user
+        if params[:action] == 'show'
+          redirect_to group_path(@group), notice: 'グループに参加しました。'
+        else
+          redirect_to groups_path, notice: 'グループに参加しました。'
+        end
+      end
     else
-      redirect_to groups_path, alert: '招待コードが無効です'
+      redirect_to groups_path, alert: '招待コードが無効です。'
     end
   end
 

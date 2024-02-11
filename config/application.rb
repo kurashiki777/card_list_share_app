@@ -30,5 +30,6 @@ module CardListShareApp
     config.time_zone = 'Tokyo'	
     config.active_record.default_timezone = :local
     config.action_view.include("ActionView::Helpers::AssetTagHelper")
+    
   end
 end

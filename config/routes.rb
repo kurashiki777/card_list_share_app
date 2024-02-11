@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :groups do
     get "join" => "groups#join"
     delete 'delete_group'
-    get 'invitation', to: 'groups#show_by_invitation', as: :group_by_invitation
   end
+  post "join_or_show_by_invitation" => "groups#join_or_show_by_invitation"
+  get 'invitation', to: 'groups#show_by_invitation', as: :group_by_invitation
 end
