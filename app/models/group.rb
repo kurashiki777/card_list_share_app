@@ -1,7 +1,7 @@
 class Group < ApplicationRecord
   has_many :group_users
   has_many :users, through: :group_users
-  mount_uploader :image, CardImageUploader
+  mount_uploader :image, GroupImageUploader
   #before_create :generate_invitation_code
   before_create :generate_unique_invitation_code
 

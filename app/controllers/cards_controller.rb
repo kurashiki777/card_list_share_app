@@ -1,5 +1,4 @@
 class CardsController < ApplicationController
-  
   def index
     @cards = current_user.cards.includes(:user).order(created_at: :desc)
   end
@@ -9,6 +8,7 @@ class CardsController < ApplicationController
   end
   
   def create
+    # binding.pry
     @card = current_user.cards.build(card_params)
     if @card.save
         redirect_to cards_path, success: t('defaults.message.created', item: Card.model_name.human)
