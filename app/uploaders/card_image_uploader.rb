@@ -47,7 +47,5 @@ class CardImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg"
   # end
-  version :fill do
-    process resize_to_fill: [50, 50]
-  end
+  
 end

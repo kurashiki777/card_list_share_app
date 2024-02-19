@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_12_161432) do
     t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.string "group_image"
   end
 
   create_table "lists", force: :cascade do |t|

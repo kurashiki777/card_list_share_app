@@ -1,7 +1,7 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class GroupImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -27,18 +27,28 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+  version :fit do
+    process resize_to_fit: [50, 50]
+  end
 
+  def default_url(*args)
+    ActionController::Base.helpers.asset_path("card_placeholder.png")
+  end
+  
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process resize_to_fit: [50, 50]
   # end
-
+  
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_allowlist
   #   %w(jpg jpeg gif png)
   # end
-
+  def extension_allowlist
+    %w[jpg jpeg gif png]
+  end
+  
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename

@@ -19,13 +19,13 @@
       <tbody>
           <% @groups.each do |group| %>
           <tr>
-              <td><%= image_tag group.image.fill.url %></td>
+              <td><%= image_tag group.group_image.fit.url %></td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td><%= group.introduction %></td>
               <td>
               <% if group.owner_id == current_user.id %>
                   <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>
-                  <%= button_to 'Delete', group_delete_group_path(group), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+                  <%= button_to 'Delete', delete_group_group_path(group), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
               <% end %>
               </td>
           </tr>
