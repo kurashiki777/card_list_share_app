@@ -17,10 +17,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create], shallow: true
   end
   resources :groups do
-    get "join" => "groups#join"
-    delete 'delete_group', on: :member  # on: :member を追加して、:idを使うことを指定
-    get 'edit', on: :member             # 同じくon: :member を追加
-    patch 'update', on: :member         # 同じくon: :member を追加
+    delete 'delete_group'
   end
   post "join_or_show_by_invitation" => "groups#join_or_show_by_invitation"
   get 'invitation', to: 'groups#show_by_invitation', as: :group_by_invitation

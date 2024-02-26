@@ -27,8 +27,8 @@ class GroupImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
-  version :fit do
-    process resize_to_fit: [50, 50]
+  version :limit do
+    process resize_to_limit: [50, 50]
   end
 
   def default_url(*args)

@@ -78,8 +78,8 @@ group :test do
 
 end
 gem 'sassc', '~> 2.0'
-gem 'carrierwave', '~> 3.0.0'
 gem 'draper', '~> 4.0.0'
-gem "mini_magick", '~> 4.0.0'
+gem 'carrierwave', '~> 3.0.0'
+gem "mini_magick"
 gem 'ransack'
 gem 'kaminari'

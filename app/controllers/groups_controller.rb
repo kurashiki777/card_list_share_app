@@ -1,6 +1,5 @@
 class GroupsController < ApplicationController
   before_action :require_login
-  before_action :ensure_correct_user, only: [:edit, :update, :delete_group]
   helper ActionView::Helpers::AssetTagHelper
 
   def index
@@ -10,9 +9,8 @@ class GroupsController < ApplicationController
   end
 
   def show
-    # binding.pry
-    #@book = Book.new
     @group = Group.find(params[:id])
+    @cards = Card.joins(user: :groups).where(groups: { id: @group.id }).order(created_at: :desc)
   end
 
   def join
@@ -33,7 +31,7 @@ class GroupsController < ApplicationController
 
   def create
     # binding.pry
-    @group = Group.new(group_params[:id])
+    @group = Group.new(group_params)
     @group.owner_id = current_user.id
     if @group.save
       @group.users << current_user
@@ -67,7 +65,7 @@ class GroupsController < ApplicationController
   end
 
   def delete_group
-    @group = Group.find(params[:id])
+    @group = Group.find(params[:group_id])
 
     # グループを削除する権限があるかどうかを確認
     if @group.owner_id == current_user.id
@@ -109,12 +107,5 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :introduction, :group_image)
-  end
-
-  def ensure_correct_user
-    @group = Group.find(params[:id])
-    unless @group.owner_id == current_user.id
-      redirect_to groups_path
-    end
   end
 end

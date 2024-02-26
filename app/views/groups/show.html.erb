@@ -1,5 +1,4 @@
-<div class='container px-5 px-sm-0'>
-  
+<div class='container px-5 px-sm-0 mx-auto'>
   <div class='row'>
     <div class='col-md-3'>
     <div class='col-md-8 offset-md-1'>
@@ -17,7 +16,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= image_tag @group.group_image.fill.url %></td>
+            <td><%= image_tag @group.group_image.limit.url %></td>
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
             <td>
@@ -40,4 +39,11 @@
       </table>
     </div>
   </div>
+</div>
+<div class="grid grid-cols-12 gap-0 mx-auto justify-content-center">
+  <% if @cards.present? %>
+    <%= render partial: 'cards/card', collection: @cards %>
+  <% else %>
+    <p><%= t('.no_result') %></p>
+  <% end %>
 </div>
