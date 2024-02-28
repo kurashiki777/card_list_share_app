@@ -1,0 +1,29 @@
+<%= form_with model: card, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :card_image %>
+    <%= f.file_field :card_image, class: 'form-control mb-3', accept: 'image/*' %>
+    <%= f.hidden_field :card_image_cache %>
+  </div>
+  <div class='mt-3 mb-3'>
+    <%= image_tag card.card_image.url%>
+  </div>
+  <div class="form-group">
+    <%= f.label :remarks %>
+    <%= f.text_area :remarks, class: 'form-control', rows: 10 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :target_quantity %>
+    <%= f.text_area :target_quantity, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :stock_quantity %>
+    <%= f.text_area :stock_quantity, class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

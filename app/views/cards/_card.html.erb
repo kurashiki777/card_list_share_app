@@ -1,0 +1,12 @@
+<div class="max-w-sm rounded overflow-hidden">
+  <div id="card-id-<%= card.id %>" class="bg-white p-0 rounded-lg">
+    <div class="card">
+      <%= link_to card_path(card) do %>
+        <%= image_tag card.card_image_url %>
+      <% end %>
+      
+      <p class="card-text mb-1 text-center tracking-tighter"><%= card.target_quantity %>:<%= card.stock_quantity %></p>
+      
+    </div>
+  </div>
+</div>

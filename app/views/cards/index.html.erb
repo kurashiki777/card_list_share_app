@@ -1,0 +1,8 @@
+<% content_for(:title, t('.title')) %>
+<div class="grid grid-cols-10 gap-2 mx-auto justify-content-center">
+  <% if @cards.present? %>
+    <%= render partial: 'card', collection: @cards %>
+  <% else %>
+    <p><%= t('.no_result') %></p>
+  <% end %>
+</div>
