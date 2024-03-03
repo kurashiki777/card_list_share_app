@@ -17,15 +17,9 @@
   <% if current_user.own?(comment) %>
     <td class="action">
       <ul class="list-inline justify-content-center" style="float: right;">
-        <li class="list-inline-item">
-          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-            編集
-          </button>
-        </li>
-        <li class="list-inline-item">
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            削除
-          </button>
+        <li class="list-inline-item flex">
+          <%= link_to "編集", edit_card_comment_path(comment.card, comment), class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
+          <%= button_to '削除', card_comment_path(comment.card, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
         </li>
       </ul>
     </td>
