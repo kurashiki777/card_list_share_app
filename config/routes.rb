@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :lists, only: %i[index edit update show destroy]
   resource :profile, only: %i[show edit update]
   resources :cards do
-    resources :comments, only: %i[create], shallow: true
+    resources :comments, only: [:create, :update, :destroy, :edit]
   end
   resources :groups do
     delete 'delete_group'
