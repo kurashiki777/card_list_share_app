@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   root 'static_pages#top'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :lists, only: %i[index edit update show destroy]
   resource :profile, only: %i[show edit update]
+  resources :password_resets, only: %i[new create edit update]
   resources :cards do
     resources :comments, only: [:create, :update, :destroy, :edit]
   end
