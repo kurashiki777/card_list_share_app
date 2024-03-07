@@ -1,32 +1,27 @@
-<div class="container pt-5">
-  <div class="row mb-3">
-    <div class="col-lg-8 offset-lg-2">
-      <h1><%= t('.title') %></h1>
+<div class="container mx-auto pt-5">
+    <div class="lg:col-span-8 lg:col-start-3">
+      <h1 class="text-3xl mb-3 container"><%= t('.title') %></h1>
       <!-- 掲示板内容 -->
       <article class="card">
-        <div class="card-body">
-          <div class='row'>
-            <div class='col-md-3'>
-              <%= image_tag @card.card_image.url, class: 'card-img-top img-fluid', size: '20x30' %>
-            </div>
-            <div class='col-md-9'>
-              <h3 class="d-inline"><%= @card.name %></h3>
-              <%= render 'crud_menus', card: @card if current_user.own?(@card) %>
-              <ul class="list-inline">
-                <li class="list-inline-item"><%= @card.user.first_name %> <%= @card.user.last_name %></li>
-                <li class="list-inline-item"><%= l @card.created_at, format: :long  %></li>
+        <div class="card-body mx-auto">
+          <%= image_tag @card.card_image.url, class: 'card-img-top object-cover w-full h-full' %>
+          <div class="md:w-3/4 ml-4">
+            <h3 class="inline-block text-2xl"><%= @card.name %></h3>
+            <ul class="list-none">
+              <li><%= @card.user.first_name %> <%= @card.user.last_name %></li>
+              <li><%= l @card.created_at, format: :long  %></li>
               </ul>
             </div>
-          </div>
-          <p><%= simple_format(@card.remarks) %></p>
+          <p class="mt-4"><%= simple_format(@card.remarks) %></p>
+          <%= render 'crud_menus', card: @card if current_user.own?(@card) %>
+          <!-- コメントフォーム -->
+          <%= render 'comments/form', { card: @card, comment: @comment } %>
+
+          <!-- コメントエリア -->
+          <%= render 'comments/comments', { comments: @comments } %>
         </div>
       </article>
     </div>
-  </div>
 
-  <!-- コメントフォーム -->
-  <%= render 'comments/form', { card: @card, comment: @comment } %>
 
-  <!-- コメントエリア -->
-  <%= render 'comments/comments', { comments: @comments } %>
 </div>

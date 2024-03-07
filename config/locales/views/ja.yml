@@ -5,6 +5,7 @@ ja:
     logout: 'ログアウト'
     post: '投稿'
     edit: '編集'
+    password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
@@ -52,3 +53,14 @@ ja:
       title: 'グループ作成'
     index:
       title: 'グループ'
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+      submit: '送信'
+    edit:
+      title: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'
