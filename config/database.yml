@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: card_list_share_app_production
-  username: card_list_share_app
-  password: <%= ENV["CARD_LIST_SHARE_APP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
