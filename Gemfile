@@ -86,3 +86,5 @@ gem "mini_magick"
 gem 'ransack'
 gem 'kaminari'
 gem 'config'
+gem 'aws-sdk-s3', require: false
+gem 'dotenv-rails'
