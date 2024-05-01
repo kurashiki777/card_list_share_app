@@ -1,27 +1,17 @@
-<tr id="comment-<%= comment.id %>">
-  <td style="width: 60px">
-    <%= image_tag comment.user.avatar_url, class: 'rounded-circle', size: '50x50' %>
+<tr id="comment-<%= comment.id %>" class="bg-white">
+  <td class="p-3">
+    <%= image_tag comment.user.avatar_url, class: 'rounded-full', width: '50', height: '50' %>
   </td>
-  <td>
-    <h3 class="small"><%= comment.user.decorate.full_name %></h3>
-    <div id="js-comment-<%= comment.id %>">
+  <td class="p-3">
+    <h3 class="text-sm font-semibold"><%= comment.user.decorate.full_name %></h3>
+    <div class="text-gray-700">
       <%= simple_format(comment.body) %>
     </div>
-    <div id="js-textarea-comment-box-<%= comment.id %>" style="display: none;">
-      <textarea id="js-textarea-comment-<%= comment.id %>" class="form-control mb-1"><%= comment.body %></textarea>
-      <button class="btn btn-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
-      <button class="btn btn-success js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
-    </div>
+    <% if current_user.own?(comment) %>
+      <div class="mt-2 flex space-x-2">
+        <%= link_to "編集", "#", class: "px-4 py-2 text-sm bg-green-500 hover:bg-green-700 text-white font-bold rounded", "data-comment-id" => comment.id %>
+        <%= button_to '削除', card_comment_path(comment.card, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "px-4 py-2 text-sm bg-red-500 hover:bg-red-700 text-white font-bold rounded" %>
+      </div>
+    <% end %>
   </td>
-
-  <% if current_user.own?(comment) %>
-    <td class="action">
-      <ul class="list-inline justify-content-center" style="float: right;">
-        <li class="list-inline-item flex">
-          <%= link_to "編集", edit_card_comment_path(comment.card, comment), class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
-          <%= button_to '削除', card_comment_path(comment.card, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
-        </li>
-      </ul>
-    </td>
-  <% end %>
 </tr>

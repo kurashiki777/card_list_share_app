@@ -11,6 +11,12 @@ module.exports = {
       backgroundColor: {
         'body': '#ffffff'
       },
+      fontSize: {
+        vw: '3vw', // ビューポートの幅の3%に基づくフォントサイズ
+      },
+      maxWidth: {
+        'max-name': '24px', // フォントサイズの最大値を24pxに設定
+      }
     },
   },
 }
