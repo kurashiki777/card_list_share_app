@@ -1,5 +1,6 @@
-<div class="flex justify-end space-x-2">
-  <%= link_to "編集", edit_card_path(card), id: "button-edit-#{card.id}", class: "bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700" %>
-
-  <%= button_to "削除", card_path(card), method: :delete, id: "button-delete-#{card.id}", class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700", data: { turbo: false, confirm: t('defaults.message.delete_confirm') } %>
+<div class="flex justify-between items-center px-4 py-2">
+  <div class="flex gap-2">
+    <%= link_to "編集", edit_card_path(card), id: "button-edit-#{card.id}", class: "bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700" %>
+    <%= button_to "削除", card_path(card), method: :delete, id: "button-delete-#{card.id}", class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700", data: { turbo: false, confirm: t('defaults.message.delete_confirm') } %>
+  </div>
 </div>

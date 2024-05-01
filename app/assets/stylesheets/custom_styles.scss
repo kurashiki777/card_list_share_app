@@ -1,0 +1,13 @@
+/* フォントサイズ調整のためのカスタムメディアクエリ */
+@media (max-width: 640px) { /* Tailwindのsmブレークポイント */
+    .max-w-max-name { font-size: 0.875rem; } /* text-baseと同等 */
+}
+@media (min-width: 641px) and (max-width: 768px) {
+    .max-w-max-name { font-size: 1rem; } /* text-lgと同等 */
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .max-w-max-name { font-size: 1.125rem; } /* text-xlと同等 */
+}
+@media (min-width: 1025px) {
+    .max-w-max-name { font-size: 1.25rem; } /* text-2xlと同等 */
+}

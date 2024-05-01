@@ -14,6 +14,7 @@ ja:
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
       delete_confirm: '削除しますか？'
+    comment_placeholder: 'コメントを書いてください'
   users:
     new:
       title: 'ユーザー登録'
