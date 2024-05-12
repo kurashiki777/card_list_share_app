@@ -1,45 +1,41 @@
-<div class='container px-5 px-sm-0 mx-auto'>
-  <div class='row'>
-    <div class='col-md-3'>
-    <div class='col-md-8 offset-md-1'>
-      <h2>Group Detail</h2>
-      <table class='table table-hover table-inverse'>
-        <thead>
-          <tr>
-            <th></th>
-            <th>グループ名</th>
-            <th>紹介文</th>
-            <th>メンバー</th>
-            <th>招待コード</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><%= image_tag @group.group_image.limit.url %></td>
-            <td><%= @group.name %></td>
-            <td><%= @group.introduction %></td>
-            <td>
-              <% @group.users.each do |member| %>
-                <%= member.decorate.full_name %><br>
-              <% end %>
-            </td>
-            <td><%= @group.invitation_code %></td>
-            <td>
-              <% if @group.owner_id == current_user.id %>
-                <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
-              <% elsif @group.users.include?(current_user) %>
-                <%= button_to 'Leave this group', group_path(@group), method: :delete, data: { turbo: false }, class: "btn btn-sm btn-danger" %>
-              <% else %>
-                <%= link_to 'Join this group', groups_join_path(@group), class: "btn btn-sm btn-success" %>
-              <% end %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class='container mx-auto px-4' style="min-width: 100%;">
+  <div class='overflow-x-auto' style="width: 100%; overflow-x: scroll;">
+    <table class='min-w-full table-auto'>
+      <thead class='text-xs text-left text-gray-700 uppercase bg-gray-50'>
+        <tr>
+          <th class='py-3 px-2'>画像</th>
+          <th class='py-3 px-4'>グループ名</th>
+          <th class='py-3 px-4'>紹介文</th>
+          <th class='py-3 px-4'>メンバー</th>
+          <th class='py-3 px-4'>招待コード</th>
+          <th class='py-3 px-2'>操作</th>
+        </tr>
+      </thead>
+      <tbody class='text-sm'>
+        <tr>
+          <td class='py-2 px-2'><img src="<%= @group.group_image.url %>" class='h-10 w-10'></td>
+          <td class='py-2 px-4'><%= @group.name %></td>
+          <td class='py-2 px-4'><%= @group.introduction %></td>
+          <td class='py-2 px-4'>
+            <% @group.users.each do |member| %>
+              <%= member.decorate.full_name %><br>
+            <% end %>
+          </td>
+          <td class='py-2 px-4'><%= @group.invitation_code %></td>
+          <td class='py-2 px-2'>
+            <% if @group.owner_id == current_user.id %>
+              <%= link_to '編集', edit_group_path(@group), class: "bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700" %>
+            <% elsif @group.users.include?(current_user) %>
+              <%= button_to '抜ける', group_path(@group), method: :delete, data: { turbo: false }, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700" %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+
+
 <div class="grid grid-cols-12 gap-0 mx-auto justify-content-center">
   <% if @cards.present? %>
     <%= render partial: 'cards/card', collection: @cards %>

@@ -22,16 +22,17 @@
               <td class="h-20">
                 <%= image_tag group.group_image.limit.url, class: "h-full" %>
               </td>
-                <td><%= link_to group.name, group_path(group) %></td>
-                <td><%= group.introduction %></td>
-                <td>
-                  <% if group.owner_id == current_user.id %>
-                      <%= link_to 'Edit', edit_group_path(group), class: "btn btn-sm btn-success" %>
-                      <%= button_to 'Delete', group_delete_group_path(group), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
-                  <% end %>
-                </td>
+              <td><%= link_to group.name, group_path(group) %></td>
+              <td><%= group.introduction %></td>
+              <td class="flex space-x-2">
+                <% if group.owner_id == current_user.id %>
+                    <%= link_to '編集', edit_group_path(group), class: "bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700" %>
+                    <%= button_to '削除', group_delete_group_path(group), method: :delete, data: { confirm: 'Are you sure?' }, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700" %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
       </tbody>
     </table>
 </div>
+
