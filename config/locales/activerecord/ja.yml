@@ -4,6 +4,7 @@ ja:
       user: 'ユーザー'
       card: 'カードリスト'
       comment: 'コメント'
+      mylist: 'マイリスト'
     attributes:
       user:
         email: 'メールアドレス'

@@ -1,19 +1,30 @@
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 w-full">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="white">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+          </svg>
       </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <%= link_to t('cards.new.title'), new_card_path, class: "btn" %>
-        <li><%= link_to t('activerecord.models.user'), cards_path, class: "btn" %></li>
-        <li><%= link_to t('group.new.title'), new_group_path, class: "btn" %></li>
-        <li><%= link_to t('group.index.title'), groups_path, class: "btn" %></li>
+
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52" style="border: 2px solid white; color: white;">
+          <li style="border-bottom: 1px solid #ccc;">
+              <%= link_to t('cards.new.title'), new_card_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: white;' %>
+          </li>
+          <li style="border-bottom: 1px solid #ccc;">
+              <%= link_to t('activerecord.models.mylist'), cards_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: white;' %>
+          </li>
+          <li style="border-bottom: 1px solid #ccc;">
+              <%= link_to t('group.new.title'), new_group_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: white;' %>
+          </li>
+          <li>
+              <%= link_to t('group.index.title'), groups_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: white;' %>
+          </li>
       </ul>
     </div>
   </div>
   <div class="navbar-end">
-    <%= link_to (t 'profiles.show.title'), profile_path, class: 'btn' %>
-    <%= button_to (t 'defaults.logout'), logout_path, method: :delete, class: "btn" %>
+    <%= link_to (t 'profiles.show.title'), profile_path, class: 'rounded-full bg-blue-500 hover:bg-blue-700 px-3 py-2 text-white text-xs md:text-sm lg:text-base mr-9' %>
+    <%= button_to (t 'defaults.logout'), logout_path, method: :delete, class: "rounded-full bg-red-500 hover:bg-red-700 px-3 py-2 text-white text-xs md:text-sm lg:text-base" %>
   </div>
 </div>
