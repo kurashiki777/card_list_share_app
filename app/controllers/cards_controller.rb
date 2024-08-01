@@ -11,10 +11,10 @@ class CardsController < ApplicationController
   def create
     @card = current_user.cards.build(card_params)
     if @card.save
-        redirect_to cards_path, success: t('defaults.message.created', item: Card.model_name.human)
+      redirect_to cards_path, success: t('defaults.message.created', item: Card.model_name.human)
     else
-        flash.now['danger'] = t('defaults.message.not_created', item: Card.model_name.human)
-        render :new
+      flash.now['danger'] = t('defaults.message.not_created', item: Card.model_name.human)
+      render :new, status: :unprocessable_entity
     end
   end
 
