@@ -88,3 +88,4 @@ gem 'kaminari'
 gem 'config'
 gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails'
+gem "tailwindcss-rails", "~> 2.6"
