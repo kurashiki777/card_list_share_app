@@ -1,24 +1,24 @@
-<div class="navbar bg-base-100 w-full">
+<div class="navbar w-full">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="black">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
           </svg>
       </div>
 
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52" style="border: 2px solid white; color: white;">
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52" style="border: 2px solid white; color: white;">
           <li style="border-bottom: 1px solid #ccc;">
-              <%= link_to t('cards.new.title'), new_card_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: white;' %>
+              <%= link_to t('cards.new.title'), new_card_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: black;' %>
           </li>
           <li style="border-bottom: 1px solid #ccc;">
-              <%= link_to t('activerecord.models.mylist'), cards_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: white;' %>
+              <%= link_to t('activerecord.models.mylist'), cards_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: black;' %>
           </li>
           <li style="border-bottom: 1px solid #ccc;">
-              <%= link_to t('group.new.title'), new_group_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: white;' %>
+              <%= link_to t('group.new.title'), new_group_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: black;' %>
           </li>
           <li>
-              <%= link_to t('group.index.title'), groups_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: white;' %>
+              <%= link_to t('group.index.title'), groups_path, class: 'btn', style: 'display: block; text-align: center; width: 100%; color: black;' %>
           </li>
       </ul>
     </div>
