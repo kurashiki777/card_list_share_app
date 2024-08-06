@@ -1,11 +1,16 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :danger
-  before_action :require_login
+  before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  private
+  protected
 
-  def not_authenticated
-    flash[:warning] = t('defaults.message.require_login')
-    redirect_to login_path
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name])
+  end
+
+  def after_sign_in_path_for(resource)
+    cards_path
   end
 end

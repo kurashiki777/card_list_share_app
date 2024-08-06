@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :require_login
+  before_action :authenticate_user!
   helper ActionView::Helpers::AssetTagHelper
 
   def index
