@@ -67,6 +67,10 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Deviseのためのメール設定
   config.action_mailer.delivery_method = :letter_opener_web
-  config.action_mailer.default_url_options = Settings.default_url_options.to_h
+
+  # 以下の行を追加
+  config.action_mailer.default_url_options = { host: Settings.default_url_options.host, port: Settings.default_url_options.port }
 end

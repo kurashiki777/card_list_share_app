@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
-  
+  before_action :authenticate_user!
+
   def index
     @cards = current_user.cards.includes(:user).order(created_at: :desc)
   end
@@ -7,7 +8,7 @@ class CardsController < ApplicationController
   def new
     @card = Card.new
   end
-  
+
   def create
     @card = current_user.cards.build(card_params)
     if @card.save
@@ -44,7 +45,7 @@ class CardsController < ApplicationController
     redirect_to cards_path, success: t('defaults.message.deleted', item: Card.model_name.human)
   end
 
-    private
+  private
 
   def card_params
     params.require(:card).permit(:name, :remarks, :target_quantity, :stock_quantity, :card_image, :card_image_cache)
