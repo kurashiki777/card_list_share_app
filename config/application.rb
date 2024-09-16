@@ -31,5 +31,6 @@ module CardListShareApp
     config.active_record.default_timezone = :local
     config.action_view.include("ActionView::Helpers::AssetTagHelper")
     config.active_storage.variant_processor = :mini_magick
+    config.api_only = false
   end
 end
