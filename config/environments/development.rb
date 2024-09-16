@@ -73,4 +73,7 @@ Rails.application.configure do
 
   # 以下の行を追加
   config.action_mailer.default_url_options = { host: Settings.default_url_options.host, port: Settings.default_url_options.port }
+
+  config.hosts << /.*ngrok-free\.app/
+  config.force_ssl = true
 end

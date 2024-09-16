@@ -1,5 +1,7 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_card, only: %i[show edit update destroy]
+  before_action :correct_user, only: %i[edit update destroy]
 
   def index
     @cards = current_user.cards.includes(:user).order(created_at: :desc)

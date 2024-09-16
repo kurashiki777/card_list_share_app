@@ -1,25 +1,24 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     passwords: 'devise/passwords',
-    sessions: 'devise/sessions',
-    registrations: 'devise/registrations'
+    sessions: 'sessions', # devise/sessions の代わりにカスタムセッションコントローラが指定されていると仮定します
+    registrations: 'devise/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+    
   }
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  
   root 'static_pages#top'
 
   resources :lists, only: %i[index edit update show destroy]
   resource :profile, only: %i[show edit update]
   resources :cards do
-    resources :comments, only: [:create, :update, :destroy, :edit]
+    resources :comments, only: %i[create update destroy edit]
   end
   resources :groups do
     delete 'delete_group'
   end
-  post "join_or_show_by_invitation" => "groups#join_or_show_by_invitation"
+  post 'join_or_show_by_invitation' => 'groups#join_or_show_by_invitation'
   get 'invitation', to: 'groups#show_by_invitation', as: :group_by_invitation
 end
