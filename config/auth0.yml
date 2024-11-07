@@ -1,0 +1,9 @@
+development:
+  auth0_domain: dev-3f24yyza2hem6lu4.jp.auth0.com
+  auth0_client_id: PXdRrjhE03rdwRmzhBnv9Ri89wbgw64A
+  auth0_client_secret: <%= ENV['AUTH0_CLIENT_SECRET'] %>
+
+production:
+  auth0_domain: <YOUR_PRODUCTION_DOMAIN>
+  auth0_client_id: <YOUR_PRODUCTION_CLIENT_ID>
+  auth0_client_secret: <%= ENV['AUTH0_PRODUCTION_CLIENT_SECRET'] %>

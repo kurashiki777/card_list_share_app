@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto main-nav align-items-center">
         <li class="nav-item">
-          <%= link_to (t 'defaults.login'), new_user_session_path, class: 'nav-link' %>
+          <%= button_to (t 'defaults.login'), omniauth_authorize_path(:user, :auth0), method: :post, data: { turbo: false }, class: 'nav-link' %>
         </li>
       </ul>
     </div>
