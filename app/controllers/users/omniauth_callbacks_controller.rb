@@ -19,5 +19,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     redirect_to destroy_user_session_path
   end
-
 end

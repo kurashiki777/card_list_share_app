@@ -1,10 +1,7 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :trackable, :omniauthable, omniauth_providers: %i[auth0]
-  
   mount_uploader :avatar, AvatarUploader
 
   has_many :cards, dependent: :destroy
@@ -16,7 +13,6 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: :password_required?
   validates :password_confirmation, presence: true, if: :password_required?
   validates :email, uniqueness: true, allow_blank: true
-  
 
   def own?(object)
     id == object.user_id

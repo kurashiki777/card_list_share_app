@@ -60,6 +60,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'letter_opener_web', '~> 2.0'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -91,3 +92,4 @@ gem 'dotenv-rails'
 gem "tailwindcss-rails", "~> 2.6"
 gem "omniauth-auth0", "~> 3.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
+
