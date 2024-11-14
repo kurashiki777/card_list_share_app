@@ -90,6 +90,6 @@ gem 'config'
 gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails'
 gem "tailwindcss-rails", "~> 2.6"
-gem 'omniauth-line'
-gem 'omniauth-rails_csrf_protection'
-gem 'pry-rails'
+gem "omniauth-auth0", "~> 3.0"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+

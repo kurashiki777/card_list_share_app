@@ -1,47 +1,22 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  
-  def line
+  skip_before_action :verify_authenticity_token, only: :auth0
+
+  def auth0
     # binding.pry
-    Rails.logger.debug "Session state before callback: #{session[:omniauth_state]}"
-    Rails.logger.debug "Callback state: #{params[:state]}"
-    logger.debug "Request environment: #{request.env.inspect}"
-    basic_action
+    # You need to implement the method below in your model (e.g. app/models/user.rb)
+    Rails.logger.debug("OmniAuth Auth Hash: #{request.env['omniauth.auth'].inspect}")
+    @user = User.from_omniauth(request.env["omniauth.auth"])
+
+    if @user.persisted?
+      set_flash_message(:notice, :success, kind: "Auth0") if is_navigational_format?
+      sign_in_and_redirect @user, event: :authentication
+    else
+      session["devise.auth0_data"] = request.env["omniauth.auth"].except(:extra) # Removing extra as it can overflow some session stores
+      redirect_to new_user_registration_url
+    end
   end
 
   def failure
-    Rails.logger.error "OmniAuth callback params: #{params.inspect}"
-    Rails.logger.error "OmniAuth error: #{request.env['omniauth.error.type']}"
-    Rails.logger.error "OmniAuth full error: #{request.env['omniauth.error'].inspect}"
-    Rails.logger.error "OmniAuth failure: #{request.env['omniauth.error'].inspect}"
-    Rails.logger.debug "Session state: #{session[:omniauth_state]}"
-    Rails.logger.debug "Callback state: #{params[:state]}"
-    # binding.pry
-    super
-  end
-  
-  private
-  
-  def basic_action
-    @omniauth = request.env["omniauth.auth"]
-  
-    if @omniauth.present?
-      @profile = User.find_or_initialize_by(provider: @omniauth["provider"], uid: @omniauth["uid"])
-  
-      if @profile.email.blank?
-        email = @omniauth["info"]["email"] ? @omniauth["info"]["email"] : "#{@omniauth["uid"]}-#{@omniauth["provider"]}@example.com"
-        @profile = current_user || User.create!(provider: @omniauth["provider"], uid: @omniauth["uid"], email: email, name: @omniauth["info"]["name"], password: Devise.friendly_token[0, 20])
-      end
-  
-      @profile.set_values(@omniauth)
-      sign_in(:user, @profile)
-    end
-  
-    flash[:notice] = "ログインしました"
-    redirect_to cards_path 
-  end
-
-	# ダミーのemailアドレスを作成するメソッド
-  def fake_email(uid, provider)
-    "#{auth.uid}-#{auth.provider}@example.com"
+    redirect_to destroy_user_session_path
   end
 end

@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    passwords: 'devise/passwords',
-    sessions: 'sessions', # devise/sessions の代わりにカスタムセッションコントローラが指定されていると仮定します
-    registrations: 'devise/registrations',
-    omniauth_callbacks: 'users/omniauth_callbacks'
-    
-  }
+  passwords: 'devise/passwords',
+  sessions: 'devise/sessions',
+  registrations: 'devise/registrations',
+  omniauth_callbacks: 'users/omniauth_callbacks'
+}
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   
