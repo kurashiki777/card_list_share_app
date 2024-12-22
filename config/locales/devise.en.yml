@@ -29,5 +29,3 @@ ja:
     unlocks:
       send_instructions: 'アカウントロック解除の案内を送信しました。'
       unlocked: 'アカウントのロックが解除されました。再度ログインしてください。'
-    omniauth_callbacks:
-      success: "%{kind}でのログインしました"
